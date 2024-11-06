@@ -1,0 +1,1 @@
+# K-lcs-nz-alkalmaz-s
