@@ -1,1 +1,1 @@
-# K-lcs-nz-alkalmaz-s
+# Kölcsönő Alkalmazás
