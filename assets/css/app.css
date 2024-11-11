@@ -8,6 +8,9 @@ html,body{
     width: 100%;
     height: 100%;
     background-image: url(../img/LandingPage.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     backdrop-filter: 5px;
     backdrop-filter: invert(80%);
     backdrop-filter: sepia(90%);
@@ -16,4 +19,56 @@ html,body{
     justify-content: center;
     justify-items: center;
     align-items: center;
+    row-gap: 2rem;
+}
+#img{
+    width: 12rem;
+    height: 12rem;
+    background-image:  url(../img/BlackManReading.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.Auth{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    column-gap: 2rem;
+}
+.gallery{
+    width: 50rem;
+    height: 50rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    column-gap: 2rem;
+}
+.kettoFoto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    row-gap: 2rem;
+    width: 100%;
+    height: 100%;
+}
+#elsoFekete{
+    background-image: url(../img/elsoFekete.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50px;
+}
+#masodikFekete{
+    background-image: url(../img/masodikFekete.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50px;
 }
