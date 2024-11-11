@@ -1,0 +1,19 @@
+<%- include('header') %>
+
+<h4 class="mb-3">Login</h4>
+
+<%- include('message') %>
+
+<form action="/login" method="post">
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" name="email" placeholder="Email">
+        <label for="email">Email address</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" name="passwd" placeholder="Password">
+        <label for="passwd">Password</label>
+    </div>
+    <input class="btn btn-primary mb-3" type="submit" value="Login">
+</form>
+
+<%- include('footer') %>
