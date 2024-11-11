@@ -1,1 +1,1 @@
-# Kölcsönő Alkalmazás
+# Kölcsönző Alkalmazás
