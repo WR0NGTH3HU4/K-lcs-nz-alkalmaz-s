@@ -3,31 +3,50 @@ html,body{
     min-width: 100vw;
     height: 100vh;
     width: 100vw;
+
 }
-.LandingPage{
+.LandingPage {
+    position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2rem;
+    overflow: hidden;
+
+}
+
+
+.LandingPage::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: url(../img/LandingPage.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    backdrop-filter: 5px;
-    backdrop-filter: invert(80%);
-    backdrop-filter: sepia(90%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    row-gap: 2rem;
+    filter: blur(6px); 
+    z-index: -1; 
+}
+
+
+.LandingPage > * {
+    position: relative;
+    z-index: 1; 
 }
 #img{
-    width: 12rem;
-    height: 12rem;
+    width: 100%;
+    height: 100%;
     background-image:  url(../img/BlackManReading.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 50px;
 }
 .Auth{
     width: 100%;
@@ -39,22 +58,22 @@ html,body{
     column-gap: 2rem;
 }
 .gallery{
-    width: 50rem;
-    height: 50rem;
+    width: 30rem;
+    height: 30rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     justify-items: center;
     align-items: center;
-    column-gap: 2rem;
+    column-gap: 1rem;
 }
-.kettoFoto{
+#kettoFoto{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     justify-items: center;
     align-items: center;
-    row-gap: 2rem;
+    row-gap: 1rem;
     width: 100%;
     height: 100%;
 }
@@ -64,6 +83,9 @@ html,body{
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 50px;
+
+    width: 14rem;
+    height: 14rem;
 }
 #masodikFekete{
     background-image: url(../img/masodikFekete.jpg);
@@ -71,4 +93,18 @@ html,body{
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 50px;
+    width: 14rem;
+    height: 14rem;
+}
+h1,p{
+    mix-blend-mode: difference;
+    color: white;   
+}
+p{
+    font-size: larger;
+}
+.authBtn{
+    width: 12rem;
+    font-size: large;
+    
 }
