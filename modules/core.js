@@ -2,6 +2,8 @@
 const express = require('express');
 const ejs = require('ejs');
 const router = express.Router();
+const db = require('./database')
+const moment = require('moment')
 
 // Landing oldal route
 router.get('/', (req, res) => {
@@ -37,5 +39,35 @@ router.get('/login', (req, res) => {
         res.send(html);
     });
 });
+
+// Kolcsonzo oldal
+router.get('/rental', (req, res) => {
+    db.query(`SELECT * FROM items`, (err, results) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+
+        let datas = [];
+
+        // results már eleve egy tömb, így nem szükséges az .array tulajdonság
+        results.forEach(element => {
+            datas.push({
+                title: element.title,
+                type: element.type,
+                available: element.available
+            });
+        });
+
+        ejs.renderFile('./views/rental.ejs', { session: req.session, results: datas }, (err, html) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            res.send(html);
+        });
+    });
+});
+
 
 module.exports = router;

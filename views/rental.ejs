@@ -5,21 +5,45 @@
 <!--Content-->
 <div class="rentalPage">
     <div class="sideBar">
-        Jelenleg köztük böngészel:
-        <span>
+        <h5>Válassz kategóriát</h5>
+        <span class="catImg">
             <!--category img-->
         </span>
-        <h3>Itt fog megjelenni a választott kategória.</h3>
-        <button>Könyvek</button>
-        <button>Filmek</button>
-        <button>Minden kategória</button>
+        <h5>A semmi közt böngészel kisbarát</h5>
+        <button class="btn btn-primary catBtn" onclick="filterItems('Könyv')">Könyvek</button>
+        <button class="btn btn-dark catBtn" onclick="filterItems('Film')">Filmek</button>
+        <button class="btn btn-secondary catBtn" onclick="filterItems('Minden')">Minden kategória</button>
     </div>
-    <div class="rentalContent">
-        <h3>Itt fognak megjelenni a választott elemek!</h3>
-        <div class="cardSystem">
+    <span class="separator">
 
+    </span>
+    <div class="rentalContent">
+        <div class="cardSystem">
+            <% results.forEach((element) => { %>
+                <span class="RentalCard">
+                    <h4><%= element.title %></h4>
+                    <h6 class="Title <%= element.available ? 'text-success' : 'text-danger' %>">
+                        <%= element.available ? 'Elérhető' : 'Elérhetetlen' %>
+                    </h6>
+                    <button 
+                        class="btn <%= element.available ? 'btn-success' : 'btn-secondary' %>" 
+                        onclick="<%= element.available ? 'rentItem(\'' + element.type + '\')' : 'cannotRent()' %>">
+                        <%= element.available ? 'Kölcsönzés' : 'Nem fogod kikölcsönözni' %>
+                    </button>
+                </span>
+            <% }); %>
+            
         </div>
     </div>
 </div>
+
+<script>
+function rentItem(itemType){
+    alert( itemType+ " kikölcsönözve!");
+}
+function cannotRent(){
+    alert("Bolond vagy? Mondom hogy nem fogod kikölcsönözni!")
+}
+</script>
 
 <%- include('footer') %>

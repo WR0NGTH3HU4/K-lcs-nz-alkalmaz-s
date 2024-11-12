@@ -2,20 +2,20 @@
 const mysql = require('mysql');
 
 // Kapcsolódás az adatbázishoz
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root', // Az adatbázis felhasználó
-    password: '', // Az adatbázis jelszava
-    database: '13a_kolcsonzes' // Az adatbázis neve
+var pool  = mysql.createPool({
+    host            : process.env.DBHOST,
+    user            : process.env.DBUSER,
+    password        : process.env.DBPASS,
+    database        : process.env.DBNAME
 });
 
 // Kapcsolódás ellenőrzése
-db.connect((err) => {
-    if (err) {
-        console.error('Hiba a kapcsolódás során:', err);
-        return;
+pool.getConnection((err) => {
+    if (err){
+        console.log('Error connection to MySQL: ' + err);
+    }else{
+        console.log('connected to MySQL database.');
     }
-    console.log('Sikeres kapcsolódás az adatbázishoz.');
 });
 
-module.exports = db;
+module.exports = pool;
