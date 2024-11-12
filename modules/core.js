@@ -27,4 +27,15 @@ router.get('/reg', (req, res) => {
     });
 });
 
+// Bejelentkezés oldal
+router.get('/login', (req, res) => {
+    ejs.renderFile('./views/login.ejs', { session: req.session }, (err, html) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        res.send(html);
+    });
+});
+
 module.exports = router;
