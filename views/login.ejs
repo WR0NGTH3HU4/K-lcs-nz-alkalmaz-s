@@ -13,26 +13,27 @@
     <div class="authForm">
         <h3 class="text-center text-light mb-3">Jelentkezz be!</h3>
         <form action="/users/login" method="post">
-            <div class="row gy-3 overflow-hidden">
+          <div class="row gy-3 overflow-hidden">
               <div class="col-12">
-                <div class="form-floating mb-3">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required>
-                  <label for="email" class="form-label">Email</label>
-                </div>
+                  <div class="form-floating mb-3">
+                      <input type="email" class="form-control" name="email" id="email" placeholder="">
+                      <label for="email">Email address</label>
+                  </div>
               </div>
               <div class="col-12">
-                <div class="form-floating mb-3">
-                  <input type="password" class="form-control" name="passwd" id="passwd" value="" placeholder="Password123" required>
-                  <label for="password" class="form-label">Password</label>
-                </div>
+                  <div class="form-floating mb-3">
+                      <!-- name="passwd" helyett name="password" -->
+                      <input type="password" class="form-control" name="password" id="passwd" placeholder="">
+                      <label for="passwd">Password</label>
+                  </div>
               </div>
               <div class="col-12">
-                <div class="d-grid">
-                    <input class="btn btn-primary mb-3 sendAuth" type="submit" value="Login">
-                </div>
+                  <div class="d-grid">
+                      <input class="btn btn-primary mb-3 sendAuth" type="submit" value="Login">
+                  </div>
               </div>
-            </div>
-          </form>
+          </div>
+      </form>
           <div class="row">
                 <div class="col-12">
                 <div class="d-flex gap-2 gap-md-4 flex-column flex-md-row justify-content-md-end mt-4">

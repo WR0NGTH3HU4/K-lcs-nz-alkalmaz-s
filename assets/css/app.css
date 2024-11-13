@@ -275,7 +275,28 @@ p{
     width: 12rem;
     height: 12rem;
     border-radius: 50px;
+
+}
+.semmiCat{
     background-image: url(../img/nothing.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.konyvCat{
+    background-image: url(../img/konyvek.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.filmCat{
+    background-image: url(../img/filmek.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.mindenCat{
+    background-image: url(../img/minden.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

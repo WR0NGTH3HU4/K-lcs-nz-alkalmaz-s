@@ -36,6 +36,7 @@ router.get('/login', (req, res) => {
             console.log(err);
             return;
         }
+        req.session.msg = '';
         res.send(html);
     });
 });

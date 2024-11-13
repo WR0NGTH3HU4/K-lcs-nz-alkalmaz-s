@@ -6,7 +6,7 @@
 <div class="rentalPage">
     <div class="sideBar">
         <h5>Válassz kategóriát</h5>
-        <span class="catImg">
+        <span class="catImg semmiCat">
             <!--category img-->
         </span>
         <h5>A semmi közt böngészel kisbarát</h5>
@@ -20,17 +20,17 @@
     <div class="rentalContent">
         <div class="cardSystem">
             <% results.forEach((element) => { %>
-                <span class="RentalCard">
+                <form class="RentalCard" method="post">
                     <h4><%= element.title %></h4>
                     <h6 class="Title <%= element.available ? 'text-success' : 'text-danger' %>">
                         <%= element.available ? 'Elérhető' : 'Elérhetetlen' %>
                     </h6>
                     <button 
-                        class="btn <%= element.available ? 'btn-success' : 'btn-secondary' %>" 
+                        class="btn <%= element.available ? 'btn-success rent' : 'btn-secondary' %>" 
                         onclick="<%= element.available ? 'rentItem(\'' + element.type + '\')' : 'cannotRent()' %>">
                         <%= element.available ? 'Kölcsönzés' : 'Nem fogod kikölcsönözni' %>
                     </button>
-                </span>
+                </form>
             <% }); %>
             
         </div>
@@ -38,11 +38,32 @@
 </div>
 
 <script>
+    let catImg = document.querySelector(".catImg");
+    let rentBtn = document.querySelector("rent")
+    
 function rentItem(itemType){
     alert( itemType+ " kikölcsönözve!");
 }
 function cannotRent(){
     alert("Bolond vagy? Mondom hogy nem fogod kikölcsönözni!")
+}
+function filterItems(type) {
+    catImg.classList.remove('semmiCat', 'mindenCat', 'filmCat', 'konyvCat'); 
+
+    switch (type) {
+        case 'Könyv':
+            catImg.classList.add('konyvCat');
+            break;
+        case 'Film':
+            catImg.classList.add('filmCat');
+            break;
+        case 'Minden':
+            catImg.classList.add('mindenCat');
+            break;
+        default:
+            catImg.classList.add('semmiCat'); 
+            break;
+    }
 }
 </script>
 
