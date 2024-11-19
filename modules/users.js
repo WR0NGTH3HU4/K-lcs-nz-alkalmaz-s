@@ -77,8 +77,6 @@ router.post('/reg', (req, res) => {
 // Bejelentkezés route
 router.post('/login', (req, res) => {
     let { email, password } = req.body;
-
-  z
     console.log('Beérkezett adatok:', email, password);
 
     if (!email || !password) {
