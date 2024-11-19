@@ -7,6 +7,7 @@ html,body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+   
     
 }
 .LandingPage {
@@ -326,4 +327,8 @@ p{
 .Title{
     text-align: center;
     width: 100%;
+}
+.newdata{
+    width: 80%;
+    height: 100%;
 }

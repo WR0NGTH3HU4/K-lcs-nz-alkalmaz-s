@@ -49,16 +49,12 @@ router.get('/rental', (req, res) => {
             return;
         }
 
-        let datas = [];
-
-        // results már eleve egy tömb, így nem szükséges az .array tulajdonság
-        results.forEach(element => {
-            datas.push({
-                title: element.title,
-                type: element.type,
-                available: element.available
-            });
-        });
+        let datas = results.map((element) => ({
+            id: element.id, 
+            title: element.title,
+            type: element.type,
+            available: element.available,
+        }));
 
         ejs.renderFile('./views/rental.ejs', { session: req.session, results: datas }, (err, html) => {
             if (err) {
@@ -69,6 +65,26 @@ router.get('/rental', (req, res) => {
         });
     });
 });
+//Uj adat fekvétele
+router.get('/newdata', (req, res) => {
+    ejs.renderFile('./views/newdata.ejs', { session: req.session }, (err, html) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        req.session.msg = '';
+        res.send(html);
+    });
+});
 
+router.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.log('Session destroy error:', err);
+        }
+      
+        res.redirect('/');
+    });
+});
 
 module.exports = router;

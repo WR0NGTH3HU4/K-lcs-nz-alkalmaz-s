@@ -59,7 +59,7 @@ router.post('/reg', (req, res) => {
         VALUES(?, ?, ?, ?)`, 
         [uuid.v4(), name, email, hashedPassword], (err, results) => {
             if (err) {
-                console.error('Database insert error:', err); // További részletes hibajelentés
+                console.error('Database insert error:', err); 
                 req.session.msg = 'Database error during insertion!';
                 req.session.severity = 'danger';
                 res.redirect('/reg');
@@ -78,7 +78,7 @@ router.post('/reg', (req, res) => {
 router.post('/login', (req, res) => {
     let { email, password } = req.body;
 
-    // Log a beérkezett adatokat a debug-hoz
+  z
     console.log('Beérkezett adatok:', email, password);
 
     if (!email || !password) {
@@ -90,22 +90,21 @@ router.post('/login', (req, res) => {
 
     db.query(`SELECT * FROM users WHERE email=?`, [email], (err, results) => {
         if (err) {
-            console.error('Database query error:', err);  // Részletes hiba naplózása
+            console.error('Database query error:', err);  
             req.session.msg = 'Adatbázis hiba!';
             req.session.severity = 'danger';
             res.redirect('/login');
             return;
         }
 
-        console.log('Query results:', results);  // Ha van adat, akkor ezt is ellenőrizd
-        if (results.length === 0) {  // Helyes ellenőrzés
+        console.log('Query results:', results); 
+        if (results.length === 0) {  
             req.session.msg = 'Érvénytelen bejelentkezési adatok! 1';
             req.session.severity = 'danger';
             res.redirect('/login');
             return;
         }
 
-        // Ellenőrizzük a jelszót CryptoJS SHA1-el
         console.log(password)
         const hashedPassword = CryptoJS.SHA1(password).toString(CryptoJS.enc.Hex);
         console.log(hashedPassword)

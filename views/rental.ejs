@@ -20,18 +20,22 @@
     <div class="rentalContent">
         <div class="cardSystem">
             <% results.forEach((element) => { %>
-                <form class="RentalCard" method="post">
+                <form class="RentalCard" action="/rentals/rent" method="post">
                     <h4><%= element.title %></h4>
                     <h6 class="Title <%= element.available ? 'text-success' : 'text-danger' %>">
                         <%= element.available ? 'Elérhető' : 'Elérhetetlen' %>
                     </h6>
+                    
+                    <input type="hidden" name="userID" value="<%= session.userID %>">
+                    <input type="hidden" name="itemID" value="<%= element.id %>">
                     <button 
                         class="btn <%= element.available ? 'btn-success rent' : 'btn-secondary' %>" 
-                        onclick="<%= element.available ? 'rentItem(\'' + element.type + '\')' : 'cannotRent()' %>">
+                        <%= element.available ? '' : 'disabled' %>>
                         <%= element.available ? 'Kölcsönzés' : 'Nem fogod kikölcsönözni' %>
                     </button>
                 </form>
             <% }); %>
+            
             
         </div>
     </div>
@@ -65,6 +69,17 @@ function filterItems(type) {
             break;
     }
 }
+document.querySelectorAll('.RentalCard').forEach(form => {
+    form.addEventListener('submit', function (event) {
+        const title = form.querySelector('input[name="title"]').value;
+        const type = form.querySelector('select[name="type"]').value;
+
+        if (!title || !type) {
+            alert('Minden mezőt ki kell tölteni!');
+            event.preventDefault();
+        }
+    });
+});
 </script>
 
 <%- include('footer') %>
